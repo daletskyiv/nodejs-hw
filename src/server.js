@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import dns from 'node:dns';
 
 import { connectMongoDB } from './db/connectMongoDB.js';
 import { loggeg } from './middleware/logger.js';
@@ -8,6 +9,8 @@ import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 import notesRoutes from './routes/notesRoutes.js';
+
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -17,10 +20,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use(notesRoutes);
-
-app.get('/test-error', () => {
-  throw new Error('Simulated server error');
-});
 
 app.use(notFoundHandler);
 app.use(errorHandler);
