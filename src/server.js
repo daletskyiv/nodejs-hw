@@ -4,7 +4,7 @@ import cors from 'cors';
 import dns from 'node:dns';
 
 import { connectMongoDB } from './db/connectMongoDB.js';
-import { loggeg } from './middleware/logger.js';
+import { logger } from './middleware/logger.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
@@ -15,7 +15,7 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
-app.use(loggeg);
+app.use(logger);
 app.use(express.json());
 app.use(cors());
 

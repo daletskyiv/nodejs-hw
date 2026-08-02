@@ -10,5 +10,3 @@ export const connectMongoDB = async () => {
     process.exit(1);
   }
 };
-
-console.log(process.env.MONGO_URL);
