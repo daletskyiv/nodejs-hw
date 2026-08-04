@@ -1,2 +1,3 @@
 # nodejs-hw
-Homework 1 Node.js Basics
+
+Homework 2 Node.js Databases
