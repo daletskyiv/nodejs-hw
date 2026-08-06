@@ -1,3 +1,3 @@
 # nodejs-hw
 
-Homework 2 Node.js Databases
+Homework 3 Node.js Validation, filtering, sorting, and pagination
