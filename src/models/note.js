@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { TAGS } from '../constans/tags';
+import { TAGS } from '../constans/tags.js';
 
 const notesSchema = new Schema(
   {
@@ -13,5 +13,7 @@ const notesSchema = new Schema(
   },
   { versionKey: false, timestamps: true },
 );
+
+notesSchema.index({ tag: 1 });
 
 export const Note = model('note', notesSchema);
