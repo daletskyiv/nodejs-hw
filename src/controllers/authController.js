@@ -11,7 +11,6 @@ export const registerUser = async (req, res) => {
   if (existingUser) {
     throw createHttpError(400, 'Email in use');
   }
-  console.log('newUser:', newUser);
   const hashedPassword = await bcrypt.hash(password, 10);
   const newUser = await User.create({
     email,
@@ -19,7 +18,6 @@ export const registerUser = async (req, res) => {
   });
 
   const newSession = await createSession(newUser._id);
-  console.log('newSession:', newSession);
 
   setSessionCookies(res, newSession);
 
@@ -43,7 +41,6 @@ export const loginUser = async (req, res) => {
   await Session.deleteOne({ userId: user._id });
 
   const newSession = await createSession(user._id);
-  console.log('newSession:', newSession);
 
   setSessionCookies(res, newSession);
 
